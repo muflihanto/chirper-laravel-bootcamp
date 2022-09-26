@@ -8,7 +8,8 @@ import { useForm, usePage } from "@inertiajs/inertia-react";
 
 dayjs.extend(relativeTime);
 
-export default function Chirp({ chirp }) {
+export default function Chirp({ chirp, test }) {
+  console.log(test);
   const { auth } = usePage().props;
 
   const [editing, setEditing] = useState(false);
@@ -66,6 +67,13 @@ export default function Chirp({ chirp }) {
                 >
                   Edit
                 </button>
+                <Dropdown.Link
+                  as="button"
+                  href={route("chirps.destroy", chirp.id)}
+                  method="delete"
+                >
+                  Delete
+                </Dropdown.Link>
               </Dropdown.Content>
             </Dropdown>
           )}
